@@ -9,5 +9,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: snippetbox
+      MYSQL_USER: web
+      MYSQL_PASSWORD: pass
     volumes:
       - ./db-data/mysql:/var/lib/mysql
