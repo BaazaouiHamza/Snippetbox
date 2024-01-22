@@ -11,6 +11,6 @@ func (app *application) routes() http.Handler {
 	mux.HandleFunc("/", app.home)
 	mux.HandleFunc("/snippet/view", app.snippetView)
 	mux.HandleFunc("/snippet/create", app.snippetCreate)
-	// Wrap the existing chain with the logRequest middleware.
-	return app.logRequest(secureHeaders(mux))
+	// Wrap the existing chain with the recoverPanic middleware.
+	return app.recoverPanic(app.logRequest(secureHeaders(mux)))
 }
