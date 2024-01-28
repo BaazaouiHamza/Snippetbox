@@ -99,6 +99,10 @@ func main() {
 		// Call the new app.routes() method to get the servemux containing our routes.
 		Handler:   app.routes(),
 		TLSConfig: tlsConfig,
+		// Add Idle, Read and Write timeouts to the server.
+		IdleTimeout:  time.Minute,
+		ReadTimeout:  5 * time.Second,
+		WriteTimeout: 10 * time.Second,
 	}
 	infoLog.Printf("Starting server on %s", *addr)
 	// Because the err variable is now already declared in the code above, we need
