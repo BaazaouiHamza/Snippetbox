@@ -13,3 +13,5 @@ require (
 	github.com/alexedwards/scs/v2 v2.7.0
 	github.com/go-playground/form/v4 v4.2.1
 )
+
+require golang.org/x/crypto v0.19.0 // indirect
