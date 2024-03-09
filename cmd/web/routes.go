@@ -15,10 +15,15 @@ func (app *application) routes() http.Handler {
 	router.NotFound = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		app.notFound(w)
 	})
+
 	// Take the ui.Files embedded filesystem and convert it to a http.FS type so
 	// that it satisfies the http.FileSystem interface. We then pass that to the
 	// http.FileServer() function to create the file server handler.
 	fileServer := http.FileServer(http.FS(ui.Files))
+
+	// Add a new GET /ping route.
+	router.HandlerFunc(http.MethodGet, "/ping", ping)
+
 	// Our static files are contained in the "static" folder of the ui.Files
 	// embedded filesystem. So, for example, our CSS stylesheet is located at
 	// "static/css/main.css". This means that we now longer need to strip the
