@@ -22,7 +22,7 @@ type templateData struct {
 	Flash           string // Add a Flash field to the templateData struct.
 	IsAuthenticated bool   // Add an IsAuthenticated field to the templateData struct.
 	CSRFToken       string // Add a CSRFToken field.
-
+	User            *models.User
 }
 
 // Create a humanDate function which returns a nicely formatted string
